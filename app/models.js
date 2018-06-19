@@ -17,7 +17,7 @@ module.exports.linkCluster = (itm, uuid) => {
                     "RelType": "HAS_FACET",
                     "ForwardRel": true,
                     "ConformedDimensions": {
-                        "Name": JSON.stringify(itm.name)
+                        "Name": itm.name
                     }
                 }
             ]
