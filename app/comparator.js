@@ -23,8 +23,8 @@ function judge(bot, uuid) {
             //findNearest
             nearest = findNearest(template)
             //send to refinery
-            console.log(JSON.stringify(nearest))
-            bot.rabbit.publish(models.linkCluster(nearest));
+            console.log(models.linkCluster(nearest,uuid));
+            bot.rabbit.publishMessage(models.linkCluster(nearest,uuid));
             return result;
         });
 };
