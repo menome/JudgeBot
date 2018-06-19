@@ -1,6 +1,6 @@
 const fs = require('fs');
 var typeConfig = require("../config/phenotypes.json");
-
+var models = require("./models");
 
 module.exports = {
     judge
@@ -19,11 +19,12 @@ function judge(bot, uuid) {
                 //console.log(record._fields[codeRec] + "\t" + record._fields[weightRec])
                 template[record._fields[codeRec]] = parseFloat(record._fields[weightRec]);
              }
-            console.log(template);
+            //console.log(template);
             //findNearest
             nearest = findNearest(template)
             //send to refinery
-            //console.log(JSON.stringify(result))
+            console.log(JSON.stringify(nearest))
+            bot.rabbit.publish(models.linkCluster(nearest));
             return result;
         });
 };
@@ -48,13 +49,14 @@ function compare(phenotype, distribution) {
     var total = 0;
     var weights = phenotype.weights;
     for (var i = 0; i < weights.length; i++) {
+        if(distribution[i] == 0) continue;
         total += Math.abs(weights[i] - distribution[i]);
     }
     var res = {
         "name": phenotype.name,
         "weight": total
     }
-    console.log(res);
+    //console.log(res);
     return res;
 }
 
