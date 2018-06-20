@@ -1,5 +1,5 @@
 const fs = require('fs');
-var typeConfig = require("../config/phenotypes.json");
+var typeConfig = require("../config/phenotypes.1.json");
 var models = require("./models");
 
 module.exports = {
@@ -56,7 +56,7 @@ function compare(phenotype, distribution) {
         "name": phenotype.name,
         "weight": total
     }
-    //console.log(res);
+    console.log(res);
     return res;
 }
 
