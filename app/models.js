@@ -13,7 +13,7 @@ module.exports.linkCluster = (itm, uuid) => {
         "Connections":
             [
                 {
-                    "NodeType": "ReportType",
+                    "NodeType": "ReportPhenotype",
                     "RelType": "HAS_FACET",
                     "ForwardRel": true,
                     "ConformedDimensions": {
