@@ -49,7 +49,7 @@ function compare(phenotype, distribution) {
     var total = 0;
     var weights = phenotype.weights;
     for (var i = 0; i < weights.length; i++) {
-        if(distribution[i] == 0) continue;
+        if(distribution[i] == 0 || !distribution[i]) continue;
         total += Math.abs(weights[i] - distribution[i]);
     }
     var res = {
